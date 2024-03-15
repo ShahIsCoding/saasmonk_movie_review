@@ -59,7 +59,6 @@ const AddModal: React.FC<MovieModalProps> = ({ modal, setModal }) => {
       reviewApi.createReview(payload, (resp) => console.log(resp));
     }
     setModal(null);
-    navigate("/");
   };
   const renderModalContent = () => {
     switch (modal) {

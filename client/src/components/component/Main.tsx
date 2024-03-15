@@ -3,12 +3,15 @@ import Home from "../pages/Home";
 import Review from "../pages/Review";
 import { useState } from "react";
 import React from "react";
-
-const Main = () => {
+type Unit = "movie" | "review" | null;
+interface main {
+  modal: Unit;
+}
+const Main = ({ modal }: main) => {
   return (
     <Routes>
-      <Route path="" element={<Home />} />
-      <Route path="/details" element={<Review />} />
+      <Route path="" element={<Home modal={modal} />} />
+      <Route path="/details" element={<Review modal={modal} />} />
     </Routes>
   );
 };

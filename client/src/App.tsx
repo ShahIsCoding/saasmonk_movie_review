@@ -14,7 +14,7 @@ function App() {
       <AddModal modal={modal} setModal={setModal} />
       <Header setModal={setModal} />
       <div className="flex-grow">
-        <Main />
+        <Main modal={modal} />
       </div>
       <Footer />
     </div>

@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
 import ReviewCard from "../component/ReviewCard";
 import { reviewApi } from "../service/api";
-import { useLocation, useNavigate } from "react-router-dom";
-
-const Review = () => {
+import { useLocation } from "react-router-dom";
+type Unit = "movie" | "review" | null;
+interface review {
+  modal: Unit;
+}
+const Review = ({ modal }: review) => {
   const [reviews, setReviews] = useState([]);
   const location = useLocation();
   let { movieId, name, average_rating } = location.state;
   useEffect(() => {
     movieId !== null &&
       reviewApi.getReview(movieId, (resp) => setReviews(resp.data));
-  }, []);
+  }, [modal]);
   return (
     <div className="p-5">
       <div className=" flex flex-row items-center justify-between w-100 mb-5">

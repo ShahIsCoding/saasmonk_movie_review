@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import MovieCard from "../component/MovieCard";
 import { movieApi, reviewApi } from "../service/api";
-
-const Home = () => {
+type Unit = "movie" | "review" | null;
+interface home {
+  modal: Unit;
+}
+const Home = ({ modal }: home) => {
   const [search, setSearch] = useState<string>("");
   const [movies, setMovies] = useState([]);
   useEffect(() => {
@@ -11,7 +14,7 @@ const Home = () => {
     } else {
       reviewApi.searchMovie(search, (resp) => setMovies(resp.data));
     }
-  }, [search]);
+  }, [search, modal]);
   return (
     <div className="p-5">
       <div className="w-1/5 h-1/5">
