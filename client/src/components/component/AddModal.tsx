@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 import { movieApi, reviewApi } from "../service/api";
 import { formatDate } from "../utils/dateUtils";
 
@@ -17,7 +17,7 @@ const AddModal = ({ modal, setModal }: MovieModalProps) => {
   const [comments, setComments] = useState<string>("");
   const [movieId, setMovieId] = useState<string>("");
   const [movies, setMovies] = useState<any>([]);
-  const navigate = useNavigate();
+
   useEffect(() => {
     movieApi.getAllMovies((resp) => setMovies(resp.data));
   }, []);
@@ -59,7 +59,6 @@ const AddModal = ({ modal, setModal }: MovieModalProps) => {
       reviewApi.createReview(payload, (resp) => console.log(resp));
     }
     setModal(null);
-    navigate("/");
   };
   const renderModalContent = () => {
     switch (modal) {
