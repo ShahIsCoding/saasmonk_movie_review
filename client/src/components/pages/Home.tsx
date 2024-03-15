@@ -44,15 +44,16 @@ const Home = ({ modal }: home) => {
       </div>
       <div className="h-3/5 overflow-auto">
         <div className="grid grid-cols-3 gap-10 ">
-          {movies.map(({ name, _id, release_date, average_rating }, idx) => (
-            <MovieCard
-              movieId={_id}
-              key={idx}
-              name={name}
-              average_rating={average_rating}
-              release_date={release_date}
-            />
-          ))}
+          {movies.length > 0 &&
+            movies.map(({ name, _id, release_date, average_rating }, idx) => (
+              <MovieCard
+                movieId={_id}
+                key={idx}
+                name={name}
+                average_rating={average_rating}
+                release_date={release_date}
+              />
+            ))}
         </div>
       </div>
     </div>
