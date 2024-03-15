@@ -1,12 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-type Props = {
+interface Props {
   name: string;
   movieId: string;
   release_date: string;
   average_rating: Number;
-};
+}
 
 function MovieCard({ name, movieId, release_date, average_rating }: Props) {
   const navigate = useNavigate();

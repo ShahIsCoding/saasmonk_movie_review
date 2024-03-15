@@ -10,7 +10,7 @@ interface MovieModalProps {
   setModal: Function;
 }
 
-const AddModal: React.FC<MovieModalProps> = ({ modal, setModal }) => {
+const AddModal = ({ modal, setModal }: MovieModalProps) => {
   const [name, setName] = useState<string>("");
   const [releaseDate, setReleaseDate] = useState<string>("");
   const [rating, setRating] = useState<string>("");
@@ -59,12 +59,13 @@ const AddModal: React.FC<MovieModalProps> = ({ modal, setModal }) => {
       reviewApi.createReview(payload, (resp) => console.log(resp));
     }
     setModal(null);
+    navigate("/");
   };
   const renderModalContent = () => {
     switch (modal) {
       case "movie":
         return (
-          <div className="flex flex-col py-5 px-5 gap-5 border">
+          <div className="flex flex-col py-5 px-5 gap-5 ">
             <h2 className="font-semibold text-xl">Add new movie</h2>
             <input
               className="border p-3 "
@@ -90,7 +91,7 @@ const AddModal: React.FC<MovieModalProps> = ({ modal, setModal }) => {
         );
       case "review":
         return (
-          <div className="flex flex-col py-5 px-5 gap-5 border">
+          <div className="flex flex-col py-5 px-5 gap-5 ">
             <h2 className="font-semibold text-xl">Add new review</h2>
             <select
               onChange={handleMoviesChange}
@@ -138,7 +139,16 @@ const AddModal: React.FC<MovieModalProps> = ({ modal, setModal }) => {
 
   return (
     <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white">
-      <div className="w-80">{renderModalContent()}</div>
+      <div className="w-80 border">
+        <div
+          className="px-5 ml-auto w-fit text-indigo-600 cursor-pointer border-0"
+          onClick={() => setModal(null)}
+        >
+          X
+        </div>
+
+        {renderModalContent()}
+      </div>
     </div>
   );
 };

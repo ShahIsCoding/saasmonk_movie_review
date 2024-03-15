@@ -11,7 +11,7 @@ function App() {
   const [modal, setModal] = useState<Unit>(null);
   return (
     <div className="h-screen flex flex-col">
-      <AddModal modal={modal} setModal={setModal} />
+      {modal && <AddModal modal={modal} setModal={setModal} />}
       <Header setModal={setModal} />
       <div className="flex-grow">
         <Main modal={modal} />
