@@ -1,0 +1,8 @@
+{
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#51085A",
+    "titleBar.activeBackground": "#710B7E",
+    "titleBar.activeForeground": "#FEFBFF"
+  },
+  "a-file-icon-vscode.opacity": 0.4
+}
